@@ -1,0 +1,15 @@
+{
+  "name": "purescript-open-unions",
+  "ignore": [
+    "*",
+    "!src/**/*",
+    "!LICENSE"
+  ],
+  "dependencies": {
+    "purescript-unsafe-coerce": "~0.1.0",
+    "purescript-maybe": "~0.3.4"
+  },
+  "devDependencies": {
+    "purescript-free": "~0.8.0"
+  }
+}
