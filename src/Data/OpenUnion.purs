@@ -3,7 +3,7 @@ module Data.OpenUnion
   , Inject
   , inj
   , prj
-  , TEQ, TCode()
+  , TEQ, TCode(), HTrue(), HFalse(), Z(), S()
   ) where
 
 import Prelude (Functor, map, unit)
@@ -48,7 +48,7 @@ instance includesHFalse :: (Inject e t) => Includes HFalse e e1 t where
   prj' _ (H e) = Nothing
   prj' _ (T e) = prj e
 
-class TEQ a b c
+class TEQ n1 n2 teq
 
 instance teqZZ :: TEQ Z Z HTrue
 
@@ -56,8 +56,6 @@ instance teqSnZ :: TEQ (S n) Z HFalse
 
 instance teqZSn :: TEQ Z (S n) HFalse
 
-instance teqSnSnT :: (TEQ n1 n2 HTrue) => TEQ (S n1) (S n2) HTrue
+instance teqSnSn :: (TEQ n1 n2 v) => TEQ (S n1) (S n2) v
 
-instance teqSnSnF :: (TEQ n1 n2 HFalse) => TEQ (S n1) (S n2) HFalse
-
-foreign import data TCode :: (* -> *) -> *
+data TCode (n :: * -> *)

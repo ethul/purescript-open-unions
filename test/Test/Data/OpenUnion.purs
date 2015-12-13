@@ -34,5 +34,5 @@ type T a = Free TF a
 injF :: forall f g a. (Inject f g) => Free f a -> Free g a
 injF = mapF inj
 
---r :: T Unit
---r = injF (print1 "1")
+r :: T Unit
+r = injF (print1 "1")
